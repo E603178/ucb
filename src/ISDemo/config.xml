@@ -3,7 +3,8 @@
 	xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
 	<name>IS Demo</name>
 	<description>
-		A small demo application showcasing the capabilities of the IS team.
+		A small demo application showcasing the capabilities of
+		the IS team.
 	</description>
 	<author email="jeroen.claes@ucb.com">
 		Jeroen Claes
@@ -13,4 +14,12 @@
 
 	<preference name="StatusBarOverlaysWebView" value="false"></preference>
 	<preference name="StatusBarBackgroundColor" value="#5858FA"></preference>
+
+	<platform name="ios">
+		<preference name="phonegap-version" value="0.0.2" />
+	</platform>
+
+	<platform name="android">
+		<preference name="phonegap-version" value="0.0.2" />
+	</platform>
 </widget>
