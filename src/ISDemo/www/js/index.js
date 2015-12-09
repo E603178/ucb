@@ -35,13 +35,7 @@ $(document).on("mobileinit", function (event, ui) {
     $.mobile.defaultPageTransition = "slide";
 });
 
-app.signUpController = new ISDemo.SignUpController();
 app.signInController = new ISDemo.SignInController();
-
-//$(document).delegate("#page-signup", "pagebeforeshow", function () {
-//    // Reset the signup form.
-//    app.signupController.resetSignUpForm();
-//});
 
 $(document).on("pagecontainerbeforeshow", function (event, ui) {
     if (typeof ui.toPage == "object") {

@@ -22,8 +22,11 @@ ISDemo.SignInController.prototype.init = function () {
 };
 
 ISDemo.SignInController.prototype.usernameIsValid = function (username) {
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(username);
+	return username.length==7 
+	and	(username.charAt(0).toUpperCase()==U 
+			or username.charAt(0).toUpperCase()==E 
+			or username.charAt(0).toUpperCase()==T)
+	and !(isNaN(username.substring(1, 7)));
 };
 
 ISDemo.SignInController.prototype.resetSignInForm = function () {
