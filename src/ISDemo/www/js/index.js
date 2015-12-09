@@ -40,10 +40,6 @@ app.signInController = new ISDemo.SignInController();
 $(document).on("pagecontainerbeforeshow", function (event, ui) {
     if (typeof ui.toPage == "object") {
         switch (ui.toPage.attr("id")) {
-            case "page-signup":
-                // Reset the signup form.
-                app.signUpController.resetSignUpForm();
-                break;
             case "page-signin":
                 // Reset signin form.
                 app.signInController.resetSignInForm();

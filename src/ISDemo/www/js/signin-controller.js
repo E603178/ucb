@@ -23,10 +23,10 @@ ISDemo.SignInController.prototype.init = function () {
 
 ISDemo.SignInController.prototype.usernameIsValid = function (username) {
 	return username.length==7 
-	and	(username.charAt(0).toUpperCase()==U 
-			or username.charAt(0).toUpperCase()==E 
-			or username.charAt(0).toUpperCase()==T)
-	and !(isNaN(username.substring(1, 7)));
+	&&	(username.charAt(0).toUpperCase()=="U" 
+			|| username.charAt(0).toUpperCase()=="E" 
+			|| username.charAt(0).toUpperCase()=="T")
+	&& !(isNaN(username.substring(1, 7)));
 };
 
 ISDemo.SignInController.prototype.resetSignInForm = function () {
@@ -74,7 +74,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function () {
         return;
     }
 
-    if (!me.usernameIsValid(username)) {
+    if (!me.usernameIsValid(Username)) {
         me.$ctnErr.html("<p>Please enter a valid username.</p>");
         me.$ctnErr.addClass("bi-ctn-err").slideDown();
         me.$txtUsername.addClass(invalidInputStyle);
@@ -98,12 +98,12 @@ ISDemo.SignInController.prototype.onSignInCommand = function () {
                 var expirationDate = new Date();
                 expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
 
-                ISDemo.Session.getInstance().set({
-                    userProfileModel: resp.extras.userProfileModel,
-                    sessionId: resp.extras.sessionId,
-                    expirationDate: expirationDate,
-                    keepSignedIn:me.$chkKeepSignedIn.is(":checked")
-                });
+//                ISDemo.Session.getInstance().set({
+//                    userProfileModel: resp.extras.userProfileModel,
+//                    sessionId: resp.extras.sessionId,
+//                    expirationDate: expirationDate,
+//                    keepSignedIn:me.$chkKeepSignedIn.is(":checked")
+//                });
                 // Go to main menu.
                 $.mobile.navigate(me.mainMenuPageId);
             /*    
