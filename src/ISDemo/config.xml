@@ -1,15 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.miamicoder.bookit" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>BookIt</name>
+    <name>IS Demo</name>
     <description>
-        A Meeting Rooms manager app.
+        A small demo application showcasing the capabilities of the IS team.
     </description>
-    <author email="miamicoder@gmail.com" href="http://miamicoder.com">
-        Jorge Ramon - MiamiCoder.com
+    <author email="jeroen.claes@ucb.com">
+        Jeroen Claes
     </author>
     <content src="index.html" />
     <access origin="*" />
 
     <preference name="StatusBarOverlaysWebView" value="false"></preference>
-    <preference name="StatusBarBackgroundColor" value="#662d91"></preference>
+    <preference name="StatusBarBackgroundColor" value="#5858FA"></preference>
 </widget>
