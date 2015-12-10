@@ -13,7 +13,7 @@ ISDemo.SignInController = function () {
 
 ISDemo.SignInController.prototype.init = function () {
     this.$signInPage = $("#page-signin");
-    this.mainMenuPageId = "#page-main-menu";
+    this.mainMenuPageId = "#page-eventlist";
     this.$btnSubmit = $("#btn-submit", this.$signInPage);
     this.$ctnErr = $("#ctn-err", this.$signInPage);
     this.$txtUsername = $("#txt-username", this.$signInPage);
