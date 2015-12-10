@@ -105,7 +105,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function () {
 //                    keepSignedIn:me.$chkKeepSignedIn.is(":checked")
 //                });
                 // Go to main menu.
-                $.mobile.navigate(me.mainMenuPageId);
+               $.mobile.navigate(me.mainMenuPageId);
             /*    
 				return;
             } else {

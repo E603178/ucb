@@ -13,7 +13,7 @@
 	<access origin="*" />
 
 	<preference name="StatusBarOverlaysWebView" value="false"></preference>
-	<preference name="StatusBarBackgroundColor" value="#5858FA"></preference>
+	<preference name="StatusBarBackgroundColor" value="#0071BC"></preference>
 
 	<platform name="ios">
 		<preference name="phonegap-version" value="0.0.2" />
