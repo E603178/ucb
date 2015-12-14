@@ -99,7 +99,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
 	xmlhttp.setRequestHeader("SOAPAction", "Login");
 	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-	//xmlhttp.send(sr);
+	xmlhttp.send(sr);
 	// send request
 	
 	$.mobile.loading("hide");
@@ -112,6 +112,8 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4) {
 			if (xmlhttp.status == 200) {
+				var resp = xmlhttp.response;
+				ISDemo.Events = jQuery.parseJSON(resp);
 				$.mobile.loading("hide");
 				// Create session.
 				var today = new Date();
@@ -151,18 +153,18 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	 * if (resp.success === true) {
 	 */
 	// Create session.
-	var today = new Date();
-	var expirationDate = new Date();
-	expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
-
-	 ISDemo.Session.getInstance().set({
-	 userProfileModel: resp.extras.userProfileModel,
-	 sessionId: resp.extras.sessionId,
-	 expirationDate: expirationDate,
-	 keepSignedIn:me.$chkKeepSignedIn.is(":checked")
-	 });
+//	var today = new Date();
+//	var expirationDate = new Date();
+//	expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
+//
+//	 ISDemo.Session.getInstance().set({
+//	 userProfileModel: resp.extras.userProfileModel,
+//	 sessionId: resp.extras.sessionId,
+//	 expirationDate: expirationDate,
+//	 keepSignedIn:me.$chkKeepSignedIn.is(":checked")
+//	 });
 	// Go to main menu.
-	$.mobile.navigate(me.mainMenuPageId);
+//	$.mobile.navigate(me.mainMenuPageId);
 	/*
 	 * return; } else { if (resp.extras.msg) { switch (resp.extras.msg) { case
 	 * ISDemo.ApiMessages.DB_ERROR: // TODO: Use a friendlier error message

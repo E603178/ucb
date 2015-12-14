@@ -88,24 +88,22 @@
 			</div>
 			<!-- /page -->
 			<div data-role="page" id="page-eventlist">
-				<div data-role="controlgroup">
-					<a href="#page-Event1" data-role="button">Event 1</a> 
-					<a href="#page-Event2" data-role="button">Event 2</a> 
-					<a href="#page-Event3" data-role="button">Event 3</a>
+				<div data-role="list" data-id="event-list">
 				</div>
 				<!-- /content -->
 			</div>
 			<!-- /page -->
-			<div data-role="page" id="page-Event1">
-				Event 1 Data
-			</div>
-			<!-- /page -->
-			<div data-role="page" id="page-Event2">
-				Event 2 Data
-			</div>
-			<!-- /page -->
-			<div data-role="page" id="page-Event3">
-				Event 3 Data
+			<div data-role="page" id="headline">
+				<div data-theme="a" data-role="header">
+					<a href="#page-eventlist" class="ui-btn-left" data-transition="slide"
+						data-direction="reverse">Back</a>
+					<h3>Event Info</h3>
+				</div>
+				<div data-role="content">
+					<ul data-role="listview" id="event-data" data-theme="a">
+
+					</ul>
+				</div>
 			</div>
 			<!-- /page -->
 
