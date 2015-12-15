@@ -103,15 +103,13 @@ $(document).on('vclick', '#event-list li a', function(){
     
     var event = jQuery.parseJSON('{"EVT_STARTDATE":"2014-11-03T00:00:00+01:00","EVT_ENDDATE":"2014-11-03T00:00:00+01:00","EVT_NAME":"testEvent","EVT_VENUE":"testVenue","EVT_MASTER_EVENTID":"EVR00000130","EVT_VENUE_CITY":"Braine"}');
     $('#event-data').empty();
-    $.mobile.changePage( "#headline", { transition: "slide", changeHash: false });
-	$('#event-data').append('<li><h3>' + event.EVT_NAME + '</h3></li>');
-	$('#event-data').append('<li>' + event.EVT_STARTDATE.split("T")[0] + ' - ' + event.EVT_ENDDATE.split("T")[0] + '</li>');
-	$('#event-data').append('<li>' + event.EVT_VENUE + ' - ' + event.EVT_VENUE_CITY + '</li>');
-	$('#event-data').append('<li><hr></li>');
+	$('#event-data').append('<li><h3>' + event.EVT_NAME + '</h3>'
+			+ '<p>' + event.EVT_STARTDATE.split("T")[0] + ' - ' + event.EVT_ENDDATE.split("T")[0] + '</p>'
+			+ '<p>' + event.EVT_VENUE + ' - ' + event.EVT_VENUE_CITY + '</p></li>');
 	$('#event-data').append('<li>Invitee 1</li>');
 	$('#event-data').append('<li>Invitee 2</li>');
-    
-//    $('#event-data').listview('refresh');
+    $.mobile.changePage( "#headline", { transition: "slide", changeHash: false });
+    $('#event-data').listview('refresh');
 });
 
 //$(document).on('pagebeforeshow', '#headline', function(){      
