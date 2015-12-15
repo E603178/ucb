@@ -117,10 +117,11 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 					password : password
 				});
 				// Go to main menu.
+				aler("username: " + ISDemo.Session.getInstance().get("username"));
 				$.mobile.navigate(me.mainMenuPageId);
 			}
 
-			if (xmlhttp.status == 500) {
+			else if (xmlhttp.status == 500) {
 				var resp = '[{"EVT_STARTDATE":"2014-11-04T12:00:00+01:00","EVT_NAME":"testEvent","EVT_VENUE":"testVenue","EVT_MASTER_EVENTID":"EVR00000110","EVT_VENUE_CITY":"Braine"},'
 						+ '{"EVT_STARTDATE":"2014-11-03T00:00:00+01:00","EVT_NAME":"testEvent","EVT_VENUE":"testVenue","EVT_MASTER_EVENTID":"EVR00000130","EVT_VENUE_CITY":"Braine"},'
 						+ '{"EVT_STARTDATE":"2015-12-17T12:00:00+01:00","EVT_NAME":"IT Gov Dept Fair Cleanup","EVT_VENUE":"Kasteel Gravenhof","EVT_MASTER_EVENTID":"EVR00000840","EVT_VENUE_CITY":"Dworp"},'
@@ -151,7 +152,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 
 			} else {
 				$.mobile.loading("hide");
-				alert('Error ' + xmlhttp.status);
+//				alert('Error ' + xmlhttp.status);
 			}
 		}
 	}
