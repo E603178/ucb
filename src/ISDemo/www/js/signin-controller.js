@@ -75,32 +75,56 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	
 	$.mobile.loading("show");
 
-	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST", "https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login", true);
+//	var xmlhttp = new XMLHttpRequest();
+//	xmlhttp.open("POST", "http://apix-test.ucb.com:9233/ucbboothdemo/Login", true);
 
-	var sr = "<?xml version='1.0' encoding='UTF-8'?>";
-	sr += "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\">";
-	sr += "<soap:Header>";
-	sr += "<wsse:Security xmlns:wsse=\"http:\//docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\" xmlns=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" soap:mustUnderstand=\"1\">";
-	sr += "<wsse:UsernameToken xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\" xmlns=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">";
-	sr += "<wsse:Username>" + username + "<\/wsse:Username>";
-	sr += "<wsse:Password Type=\"http:\//docs.oasis-open.org\/wss\/2004\/01\/oasis-200401-wss-username-token-profile-1.0#PasswordText\">"
-			+ password + "<\/wsse:Password>";
-	sr += "<\/wsse:UsernameToken>";
-	sr += "<\/wsse:Security>";
-	sr += "<\/soap:Header>";
-	sr += "<soap:Body xmlns:ns1=\"http://xmlns.oracle.com/bpel/mobile/Notificationlist\">";
-	sr += "<wsse:Username>" + username +"</wsse:Username>";
-	sr += "<wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">" + password + "</wsse:Password>";
-	sr += "<\/soap:Body>";
-	sr += "<\/soap:Envelope>";
-
-	// Send the POST request
-	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
-	xmlhttp.setRequestHeader("SOAPAction", "Login");
-	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-	xmlhttp.send(sr);
+//	var sr = "<?xml version='1.0' encoding='UTF-8'?>";
+//	sr += "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\">";
+//	sr += "<soap:Header>";
+//	sr += "<wsse:Security xmlns:wsse=\"http:\//docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\" xmlns=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" soap:mustUnderstand=\"1\">";
+//	sr += "<wsse:UsernameToken xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\" xmlns=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">";
+//	sr += "<wsse:Username>" + username + "<\/wsse:Username>";
+//	sr += "<wsse:Password Type=\"http:\//docs.oasis-open.org\/wss\/2004\/01\/oasis-200401-wss-username-token-profile-1.0#PasswordText\">"
+//			+ password + "<\/wsse:Password>";
+//	sr += "<\/wsse:UsernameToken>";
+//	sr += "<\/wsse:Security>";
+//	sr += "<\/soap:Header>";
+//	sr += "<soap:Body xmlns:ns1=\"http://xmlns.oracle.com/bpel/mobile/Notificationlist\">";
+//	sr += "<wsse:Username>" + username +"</wsse:Username>";
+//	sr += "<wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">" + password + "</wsse:Password>";
+//	sr += "<\/soap:Body>";
+//	sr += "<\/soap:Envelope>";
+//
+//	// Send the POST request
+//	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
+//	xmlhttp.setRequestHeader("SOAPAction", "Login");
+//	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+//	xmlhttp.send(sr);
 	// send request
+	
+	$.soap({
+    url: 'http://apix-test.ucb.com:9233/ucbboothdemo/',
+    method: 'Login',
+
+    data: {
+    	Username: username,
+        Password: password
+    },
+
+    success: function (soapResponse) {
+    	alert('soap successfull');
+        // do stuff with soapResponse
+        // if you want to have the response as JSON use soapResponse.toJSON();
+        // or soapResponse.toString() to get XML string
+        // or soapResponse.toXML() to get XML DOM
+    },
+    error: function (SOAPResponse) {
+    	alert('soap failed');
+        // show error
+    }
+});
+	
+	
 	
 	$.mobile.loading("hide");
 	$.mobile.navigate(me.mainMenuPageId);
@@ -109,36 +133,36 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	
 	// ...
 	
-	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4) {
-			if (xmlhttp.status == 200) {
-				var resp = xmlhttp.response;
-				ISDemo.Events = jQuery.parseJSON(resp);
-				$.mobile.loading("hide");
-				// Create session.
-				var today = new Date();
-				var expirationDate = new Date();
-				expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
-
-				 ISDemo.Session.getInstance().set({
-				 userProfileModel: resp.extras.userProfileModel,
-				 sessionId: resp.extras.sessionId,
-				 expirationDate: expirationDate,
-				 keepSignedIn:me.$chkKeepSignedIn.is(":checked"),
-				 username:username,
-				 password:password
-				 });
-				// Go to main menu.
-				$.mobile.navigate(me.mainMenuPageId);
-				
-				
-				
-			} else {
-				$.mobile.loading("hide");
-				alert('Error ' + xmlhttp.status);
-			}
-		}
-	}	
+//	xmlhttp.onreadystatechange = function() {
+//		if (xmlhttp.readyState == 4) {
+//			if (xmlhttp.status == 200) {
+//				var resp = xmlhttp.response;
+//				ISDemo.Events = jQuery.parseJSON(resp);
+//				$.mobile.loading("hide");
+//				// Create session.
+//				var today = new Date();
+//				var expirationDate = new Date();
+//				expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
+//
+//				 ISDemo.Session.getInstance().set({
+//				 userProfileModel: resp.extras.userProfileModel,
+//				 sessionId: resp.extras.sessionId,
+//				 expirationDate: expirationDate,
+//				 keepSignedIn:me.$chkKeepSignedIn.is(":checked"),
+//				 username:username,
+//				 password:password
+//				 });
+//				// Go to main menu.
+//				$.mobile.navigate(me.mainMenuPageId);
+//				
+//				
+//				
+//			} else {
+//				$.mobile.loading("hide");
+//				alert('Error ' + xmlhttp.status);
+//			}
+//		}
+//	}	
 	
 
 	/*
