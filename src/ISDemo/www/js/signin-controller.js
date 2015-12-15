@@ -79,20 +79,10 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	xmlhttp.open("POST", "https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login", true);
 
 	var sr = "<?xml version='1.0' encoding='UTF-8'?>";
-	sr += "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:wsu=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd\">";
-	sr += "<soap:Header>";
-	sr += "<wsse:Security xmlns:wsse=\"http:\//docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\" xmlns=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\" xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\" soap:mustUnderstand=\"1\">";
-	sr += "<wsse:UsernameToken xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\" xmlns=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">";
-	sr += "<wsse:Username>" + username + "<\/wsse:Username>";
-	sr += "<wsse:Password Type=\"http:\//docs.oasis-open.org\/wss\/2004\/01\/oasis-200401-wss-username-token-profile-1.0#PasswordText\">"
-			+ password + "<\/wsse:Password>";
-	sr += "<\/wsse:UsernameToken>";
-	sr += "<\/wsse:Security>";
-	sr += "<\/soap:Header>";
-	sr += "<soap:Body>";
+	sr += "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" >";
+		sr += "<soap:Body>";
 	sr += "<wsse:Username>" + username + "</wsse:Username>";
-	sr += "<wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">"
-			+ password + "</wsse:Password>";
+	sr += "<wsse:Password>"	+ password + "</wsse:Password>";
 	sr += "<\/soap:Body>";
 	sr += "<\/soap:Envelope>";
 
