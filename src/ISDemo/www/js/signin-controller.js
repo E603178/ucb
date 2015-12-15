@@ -102,6 +102,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4) {
 			if (xmlhttp.status == 200) {
+				alert('Error ' + xmlhttp.status);
 				var resp = xmlhttp.response;
 				ISDemo.Events = jQuery.parseJSON(resp);
 				$.mobile.loading("hide");
@@ -109,7 +110,6 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 				var today = new Date();
 				var expirationDate = new Date();
 				expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
-
 				ISDemo.Session.getInstance().set({
 					expirationDate : expirationDate,
 					keepSignedIn : me.$chkKeepSignedIn.is(":checked"),
@@ -122,6 +122,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 			}
 
 			else if (xmlhttp.status == 500) {
+				alert('Error ' + xmlhttp.status);
 				var resp = '[{"EVT_STARTDATE":"2014-11-04T12:00:00+01:00","EVT_NAME":"testEvent","EVT_VENUE":"testVenue","EVT_MASTER_EVENTID":"EVR00000110","EVT_VENUE_CITY":"Braine"},'
 						+ '{"EVT_STARTDATE":"2014-11-03T00:00:00+01:00","EVT_NAME":"testEvent","EVT_VENUE":"testVenue","EVT_MASTER_EVENTID":"EVR00000130","EVT_VENUE_CITY":"Braine"},'
 						+ '{"EVT_STARTDATE":"2015-12-17T12:00:00+01:00","EVT_NAME":"IT Gov Dept Fair Cleanup","EVT_VENUE":"Kasteel Gravenhof","EVT_MASTER_EVENTID":"EVR00000840","EVT_VENUE_CITY":"Dworp"},'
@@ -152,7 +153,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 
 			} else {
 				$.mobile.loading("hide");
-//				alert('Error ' + xmlhttp.status);
+				alert('Error ' + xmlhttp.status);
 			}
 		}
 	}
