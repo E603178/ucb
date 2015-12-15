@@ -75,6 +75,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 
 	$.mobile.loading("show");
 
+	$.support.cors=true;
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", "https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login", true);
 
