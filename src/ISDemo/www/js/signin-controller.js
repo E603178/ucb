@@ -103,7 +103,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	// send request
 	
 	$.soap({
-    url: 'https://apix-test.ucb.com:9233/ucbboothdemo/',
+    url: 'https://webmessaging-test.ucb.com:9233/ucbboothdemo/',
     method: 'Login',
 
     data: {
