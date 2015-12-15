@@ -38,6 +38,13 @@ app.initialize();
 
 $(document).on("mobileinit", function (event, ui) {
     $.mobile.defaultPageTransition = "slide";
+    $.support.cors=true;
+});
+
+$( document ).bind( "mobileinit", function() {
+    // Make your jQuery Mobile framework configuration changes here!
+
+    $.mobile.allowCrossDomainPages = true;
 });
 
 app.signInController = new ISDemo.SignInController();
