@@ -94,8 +94,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	xmlhttp.send(sr);
 	// send request
 
-	$.mobile.loading("hide");
-	$.mobile.navigate(me.mainMenuPageId);
+
 	// Skip login for testing purposes. TODO remove for final deployment.
 
 	// ...
@@ -103,7 +102,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	xmlhttp.onreadystatechange = function() {
 		if (xmlhttp.readyState == 4) {
 			if (xmlhttp.status == 200) {
-				alert('Error ' + xmlhttp.status);
+				$.mobile.loading("hide");
 				var resp = xmlhttp.response;
 				ISDemo.Events = jQuery.parseJSON(resp);
 				$.mobile.loading("hide");
@@ -111,18 +110,17 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 				var today = new Date();
 				var expirationDate = new Date();
 				expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
-				ISDemo.Session.getInstance().set({
-					expirationDate : expirationDate,
-					keepSignedIn : me.$chkKeepSignedIn.is(":checked"),
-					username : username,
-					password : password
-				});
+				ISDemo.Session.username=username;
+				ISDemo.Session.password=password;
+				ISDemo.SessionexpirationDate=expirationDate,
+				ISDemo.SessionkeepSignedIn=me.$chkKeepSignedIn.is(":checked")
 				// Go to main menu.
-				aler("username: " + ISDemo.Session.getInstance().get("username"));
+//				aler("username: " + ISDemo.Session.getInstance().get("username"));
 				$.mobile.navigate(me.mainMenuPageId);
 			}
 
 			else if (xmlhttp.status == 500) {
+				$.mobile.loading("hide");
 				alert('Error ' + xmlhttp.status);
 				var resp = '[{"EVT_STARTDATE":"2014-11-04T12:00:00+01:00","EVT_NAME":"testEvent","EVT_VENUE":"testVenue","EVT_MASTER_EVENTID":"EVR00000110","EVT_VENUE_CITY":"Braine"},'
 						+ '{"EVT_STARTDATE":"2014-11-03T00:00:00+01:00","EVT_NAME":"testEvent","EVT_VENUE":"testVenue","EVT_MASTER_EVENTID":"EVR00000130","EVT_VENUE_CITY":"Braine"},'

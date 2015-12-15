@@ -1,8 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ucb.ISDemo" 
-		version="1.0.0"
-		xmlns="http://www.w3.org/ns/widgets" 
-		xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ucb.ISDemo" version="1.0.0"
+	xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
 	<name>IS Demo</name>
 	<description>
 		A small demo application showcasing the capabilities of
@@ -12,6 +10,10 @@
 		Jeroen Claes
 	</author>
 	<content src="index.html" />
+	<access origin="http://127.0.0.1*" /> <!-- allow local pages -->
+	<access origin="https://webmessaging-test.ucb.com" />
+	<access origin="https://webmessaging-test.ucb.com" subdomains="true" />
+	<access origin=".*" />
 	<access origin="*" />
 
 	<preference name="StatusBarOverlaysWebView" value="false"></preference>
