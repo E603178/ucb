@@ -37,15 +37,17 @@ app.initialize();
 // End boilerplate code.
 
 $(document).on("mobileinit", function(event, ui) {
-	
+	$.mobile.defaultPageTransition = "slide";
+	alert("xrealm allowed");
 	$.support.cors = true;
+	$.mobile.allowCrossDomainPages = true;
 });
 
 $(document).bind("mobileinit", function() {
 	// Make your jQuery Mobile framework configuration changes here!
-	alert("xrealm allowed");
-	$.mobile.defaultPageTransition = "slide";
-	$.mobile.allowCrossDomainPages = true;
+	
+	
+	
 });
 
 app.signInController = new ISDemo.SignInController();
