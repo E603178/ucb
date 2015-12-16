@@ -135,31 +135,31 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 //	});
 
 	// ...
-//
-//	xmlhttp.onreadystatechange = function() {
-//		if (xmlhttp.readyState == 4) {
-//			if (xmlhttp.status == 200) {
-//				$.mobile.loading("hide");
-//				var resp = xmlhttp.response;
-//				ISDemo.Events = jQuery.parseJSON(resp);
-//				$.mobile.loading("hide");
-//				// Create session.
-//				var today = new Date();
-//				var expirationDate = new Date();
-//				expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
-//				ISDemo.Session.username=username;
-//				ISDemo.Session.password=password;
-//				ISDemo.SessionexpirationDate=expirationDate,
-//				ISDemo.SessionkeepSignedIn=me.$chkKeepSignedIn.is(":checked")
-//				// Go to main menu.
-////				aler("username: " + ISDemo.Session.getInstance().get("username"));
-//				$.mobile.navigate(me.mainMenuPageId);
-//			} else {
-//				$.mobile.loading("hide");
-//				alert('Error ' + xmlhttp.status + ': ' + xmlhttp.statusText);
-//			}
-//		}
-//	}
+
+	xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState == 4) {
+			if (xmlhttp.status == 200) {
+				$.mobile.loading("hide");
+				var resp = xmlhttp.response;
+				ISDemo.Events = jQuery.parseJSON(resp);
+				$.mobile.loading("hide");
+				// Create session.
+				var today = new Date();
+				var expirationDate = new Date();
+				expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
+				ISDemo.Session.username=username;
+				ISDemo.Session.password=password;
+				ISDemo.SessionexpirationDate=expirationDate,
+				ISDemo.SessionkeepSignedIn=me.$chkKeepSignedIn.is(":checked")
+				// Go to main menu.
+//				aler("username: " + ISDemo.Session.getInstance().get("username"));
+				$.mobile.navigate(me.mainMenuPageId);
+			} else {
+				$.mobile.loading("hide");
+				alert('Error ' + xmlhttp.status + ': ' + xmlhttp.statusText);
+			}
+		}
+	}
 
 	/*
 	 * 
