@@ -104,7 +104,8 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 		type: "POST",
 		contentType: "text/xml; charset=utf-8",
 		accepts:"application/xml; text/xml; \*/\*",
-		dataType: "jsonp",
+		dataType: "json",
+		crossDomain: true,
 		data: sr,
 		processData: false,
 		success: function(resp){
