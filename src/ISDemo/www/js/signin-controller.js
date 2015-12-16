@@ -124,9 +124,13 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 //			aler("username: " + ISDemo.Session.getInstance().get("username"));
 			$.mobile.navigate(me.mainMenuPageId);
 		},
-		error: function(err,status){
-			alert(err.status + ": " + err.statusText + ": " + err.responseText);
-		}
+		error: function(jqXHR, textStatus, errorThrown) {
+			// or use alerts if you can't see your log
+			alert("status: " + textStatus);
+			alert("errorThrown: " + errorThrown);
+			// can't remember if this works:
+			alert(jqXHR.statusText);
+			}
 		
 	});
 

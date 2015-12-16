@@ -78,8 +78,6 @@
 	</manifest>
   <plugin name="cordova-plugin-whitelist" version="1"/>
   <allow-intent href="*" />
-	<access origin=".*" />
-	<access origin="*" />
   <platform name="android">
     <allow-intent href="market:*"/>
   </platform>
