@@ -93,7 +93,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
 	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
 	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-	xmlhttp.setRequestHeader("data-Type", "json");
+	xmlhttp.setRequestHeader("data-Type", "jsonp");
 	xmlhttp.setRequestHeader("Host", "webmessaging-test.ucb.com:9233");
 	xmlhttp.send(sr);
 	// send request
