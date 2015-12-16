@@ -13,7 +13,7 @@
 		Jeroen Claes
 	</author>
 	<content src="index.html" />
-	<preference name="phonegap-version" value="cli-5.2.0" />
+	<preference name="phonegap-version" value="4.3.1" />
 	<preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"                 value="true" />           <!-- all: hides the status bar at the top of the screen -->
