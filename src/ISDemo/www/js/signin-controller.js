@@ -94,40 +94,40 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
 	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
 	xmlhttp.setRequestHeader("data-Type", "json");
-	xmlhttp.send(sr);
+//	xmlhttp.send(sr);
 	// send request
 
-//	$.ajax({
-//		headers: { 	'Accept': "application/xml; text/xml; \*/\*",
-//					'Content-Type': "text/xml; charset=utf-8",
-//					'SOAPAction': "\"Login\""
-//					},
-//		type: "POST",
-//		url:"https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login",
-//		dataType: "jsonp",
-//		data: sr,
-//		processData: false,
-//		success: function(resp){
-//			$.mobile.loading("hide");
-//			ISDemo.Events = jQuery.parseJSON(resp);
-//			$.mobile.loading("hide");
-//			// Create session.
-//			var today = new Date();
-//			var expirationDate = new Date();
-//			expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
-//			ISDemo.Session.username=username;
-//			ISDemo.Session.password=password;
-//			ISDemo.SessionexpirationDate=expirationDate,
-//			ISDemo.SessionkeepSignedIn=me.$chkKeepSignedIn.is(":checked")
-//			// Go to main menu.
-////			aler("username: " + ISDemo.Session.getInstance().get("username"));
-//			$.mobile.navigate(me.mainMenuPageId);
-//		},
-//		error: function(err,status){
-//			alert(err);
-//		}
-//		
-//	});
+	$.ajax({
+		headers: { 	'SOAPAction': "\"Login\""
+					},
+		url:"https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login",
+		type: "POST",
+		contentType: "text/xml; charset=utf-8",
+		accepts:"application/xml; text/xml; \*/\*",
+		dataType: "json",
+		data: sr,
+		processData: false,
+		success: function(resp){
+			$.mobile.loading("hide");
+			ISDemo.Events = resp;
+			$.mobile.loading("hide");
+			// Create session.
+			var today = new Date();
+			var expirationDate = new Date();
+			expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
+			ISDemo.Session.username=username;
+			ISDemo.Session.password=password;
+			ISDemo.SessionexpirationDate=expirationDate,
+			ISDemo.SessionkeepSignedIn=me.$chkKeepSignedIn.is(":checked")
+			// Go to main menu.
+//			aler("username: " + ISDemo.Session.getInstance().get("username"));
+			$.mobile.navigate(me.mainMenuPageId);
+		},
+		error: function(err,status){
+			alert(err);
+		}
+		
+	});
 
 	// Skip login for testing purposes. TODO remove for final deployment.
 
