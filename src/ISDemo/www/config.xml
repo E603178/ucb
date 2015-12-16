@@ -6,7 +6,7 @@
 	</description>
 <author email="jeroen.claes@ucb.com">
 		Jeroen Claes
-	</author
+	</author>
   <content src="index.html"/>
   <preference name="permissions" value="none"/>
   <preference name="orientation" value="default"/>
@@ -23,6 +23,8 @@
   <preference name="disable-cursor" value="false"/>
   <preference name="android-minSdkVersion" value="14"/>
   <preference name="android-installLocation" value="auto"/>
+  <preference name="StatusBarOverlaysWebView" value="false"></preference>
+  <preference name="StatusBarBackgroundColor" value="#0071BC"></preference>  
   <gap:plugin name="org.apache.cordova.battery-status"/>
   <gap:plugin name="org.apache.cordova.camera"/>
   <gap:plugin name="org.apache.cordova.media-capture"/>
@@ -73,8 +75,7 @@
 	<access origin="http://webmessaging-test.ucb.com" subdomains="true" />
 	<access origin=".*" />
 	<access origin="*" />
-	<preference name="StatusBarOverlaysWebView" value="false"></preference>
-	<preference name="StatusBarBackgroundColor" value="#0071BC"></preference>
+	
 	<manifest android:hardwareAccelerated="true"
 		android:versionCode="1" android:versionName="1.0.0"
 		android:windowSoftInputMode="adjustPan" package="com.ucb.ISDemo"
