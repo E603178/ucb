@@ -19,7 +19,7 @@
 	<preference name="StatusBarOverlaysWebView" value="false"></preference>
 	<preference name="StatusBarBackgroundColor" value="#0071BC"></preference>
 
-<!-- 	<application android:debuggable="true"> -->
+	<application android:debuggable="true"/>
 
 <!-- 		<manifest android:hardwareAccelerated="true" -->
 <!-- 			android:versionCode="1"  -->
