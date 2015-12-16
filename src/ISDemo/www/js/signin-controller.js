@@ -126,7 +126,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 		},
 		error: function(jqXHR, textStatus, errorThrown) {
 			// or use alerts if you can't see your log
-			alert("status: " + textStatus);
+			alert("status " + jqXHR.status + ": " +textStatus);
 			alert("errorThrown: " + errorThrown);
 			// can't remember if this works:
 			alert(jqXHR.statusText);
