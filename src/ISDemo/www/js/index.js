@@ -37,13 +37,14 @@ app.initialize();
 // End boilerplate code.
 
 $(document).on("mobileinit", function(event, ui) {
-	$.mobile.defaultPageTransition = "slide";
+	
 	$.support.cors = true;
 });
 
 $(document).bind("mobileinit", function() {
 	// Make your jQuery Mobile framework configuration changes here!
-
+	alert("xrealm allowed");
+	$.mobile.defaultPageTransition = "slide";
 	$.mobile.allowCrossDomainPages = true;
 });
 
