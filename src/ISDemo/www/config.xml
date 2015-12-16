@@ -18,4 +18,15 @@
 
 	<preference name="StatusBarOverlaysWebView" value="false"></preference>
 	<preference name="StatusBarBackgroundColor" value="#0071BC"></preference>
+
+<!-- 	<application android:debuggable="true"> -->
+
+<!-- 		<manifest android:hardwareAccelerated="true" -->
+<!-- 			android:versionCode="1"  -->
+<!-- 			android:versionName="1.0.0" -->
+<!-- 			android:windowSoftInputMode="adjustPan"  -->
+<!-- 			package="com.ucb.ISDemo" -->
+<!-- 			xmlns:android="http://schemas.android.com/apk/res/android"> -->
+
+
 </widget>
