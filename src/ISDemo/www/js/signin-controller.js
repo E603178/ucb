@@ -79,7 +79,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	$.mobile.allowCrossDomainPages = true;	
 	
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST", "https://apix-test.ucb.com:9233/ucbboothdemo/Login", false);
+	xmlhttp.open("POST", "https://apix-test.ucb.com:9233/ucbboothdemo/Login", true);
 
 	var sr = "<?xml version='1.0' encoding='UTF-8'?>";
 	sr += "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" >";
