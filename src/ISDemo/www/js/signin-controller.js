@@ -100,7 +100,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	$.ajax({
 		headers: { 	'SOAPAction': "\"Login\""
 					},
-		url:"https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login",
+		url:"https://apix-test.ucb.com:9233/ucbboothdemo/Login",
 		type: "POST",
 		contentType: "text/xml; charset=utf-8",
 		accepts:"application/xml; text/xml; \*/\*",
