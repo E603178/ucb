@@ -124,7 +124,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 			$.mobile.navigate(me.mainMenuPageId);
 		},
 		error: function(err,status){
-			alert(err.status + ": " err.statusText + ": " + err.responseText);
+			alert(err.status + ": " + err.statusText + ": " + err.responseText);
 		}
 		
 	});
