@@ -108,7 +108,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 		data: sr,
 		processData: false,
 		success: function(resp){
-			$.mobile.loading("hide");
+			alert("success")
 			ISDemo.Events = resp;
 			$.mobile.loading("hide");
 			// Create session.
@@ -151,37 +151,6 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 				// Go to main menu.
 //				aler("username: " + ISDemo.Session.getInstance().get("username"));
 				$.mobile.navigate(me.mainMenuPageId);
-			} else if (xmlhttp.status == 500) {
-				$.mobile.loading("hide");
-				alert('Error ' + xmlhttp.status);
-				var resp = '[{"EVT_STARTDATE":"2014-11-04T12:00:00+01:00","EVT_NAME":"testEvent","EVT_VENUE":"testVenue","EVT_MASTER_EVENTID":"EVR00000110","EVT_VENUE_CITY":"Braine"},'
-						+ '{"EVT_STARTDATE":"2014-11-03T00:00:00+01:00","EVT_NAME":"testEvent","EVT_VENUE":"testVenue","EVT_MASTER_EVENTID":"EVR00000130","EVT_VENUE_CITY":"Braine"},'
-						+ '{"EVT_STARTDATE":"2015-12-17T12:00:00+01:00","EVT_NAME":"IT Gov Dept Fair Cleanup","EVT_VENUE":"Kasteel Gravenhof","EVT_MASTER_EVENTID":"EVR00000840","EVT_VENUE_CITY":"Dworp"},'
-						+ '{"EVT_STARTDATE":"2015-12-17T12:00:00+01:00","EVT_NAME":"IT Governance Department Fair","EVT_VENUE":"Kasteel Gravenhof","EVT_MASTER_EVENTID":"EVR00000828","EVT_VENUE_CITY":"Dworp"}]';
-				;
-				ISDemo.Events = jQuery.parseJSON(resp);
-				$.mobile.loading("hide");
-				// Create session.
-				var today = new Date();
-				var expirationDate = new Date();
-				expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
-
-//				ISDemo.Session.getInstance().set({
-//					expirationDate : expirationDate,
-//					keepSignedIn : me.$chkKeepSignedIn.is(":checked"),
-//					username : username,
-//					password : password
-//				});
-				
-				
-				 $('#event-list').empty();
-				    $.each(ISDemo.Events, function(i, event) {	
-				    	$('#event-list').append('<li><a href="" data-id="' + event.EVT_MASTER_EVENTID + '"><h3>' + event.EVT_NAME + '</h3><p>' + event.EVT_STARTDATE.split("T") + ' - ' + event.EVT_VENUE_CITY + ' - ' + event.EVT_VENUE + '</p></a></li>');
-				    });
-				    $('#event-list').listview('refresh');
-				// Go to main menu.
-				$.mobile.navigate(me.mainMenuPageId);
-
 			} else {
 				$.mobile.loading("hide");
 				alert('Error ' + xmlhttp.status + ': ' + xmlhttp.statusText);
