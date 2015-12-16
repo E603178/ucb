@@ -75,8 +75,6 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 
 	$.mobile.loading("show");
 
-	$.support.cors = true;
-	$.mobile.allowCrossDomainPages = true;	
 	
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", "https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login", true);
@@ -97,6 +95,37 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	xmlhttp.send(sr);
 	// send request
 
+//	$.ajax({
+//		headers: { 	'Accept': "application/xml; text/xml; \*/\*",
+//					'Content-Type': "text/xml; charset=utf-8",
+//					'SOAPAction': "\"Login\""
+//					},
+//		type: "POST",
+//		url:"https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login",
+//		dataType: "jsonp",
+//		data: sr,
+//		processData: false,
+//		success: function(resp){
+//			$.mobile.loading("hide");
+//			ISDemo.Events = jQuery.parseJSON(resp);
+//			$.mobile.loading("hide");
+//			// Create session.
+//			var today = new Date();
+//			var expirationDate = new Date();
+//			expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
+//			ISDemo.Session.username=username;
+//			ISDemo.Session.password=password;
+//			ISDemo.SessionexpirationDate=expirationDate,
+//			ISDemo.SessionkeepSignedIn=me.$chkKeepSignedIn.is(":checked")
+//			// Go to main menu.
+////			aler("username: " + ISDemo.Session.getInstance().get("username"));
+//			$.mobile.navigate(me.mainMenuPageId);
+//		},
+//		error: function(err,status){
+//			alert(err);
+//		}
+//		
+//	});
 
 	// Skip login for testing purposes. TODO remove for final deployment.
 
@@ -153,7 +182,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 
 			} else {
 				$.mobile.loading("hide");
-				alert('Error ' + xmlhttp.status + ': ' + xmlhttp.responseText);
+				alert('Error ' + xmlhttp.status + ': ' + xmlhttp.response);
 			}
 		}
 	}
