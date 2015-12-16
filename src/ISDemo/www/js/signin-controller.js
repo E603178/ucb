@@ -90,49 +90,49 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	sr += "<\/soap:Envelope>";
 
 	// Send the POST request
-//	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
-//	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
-//	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-//	xmlhttp.setRequestHeader("data-Type", "json");
-//	xmlhttp.send(sr);
+	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
+	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
+	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+	xmlhttp.setRequestHeader("data-Type", "json");
+	xmlhttp.send(sr);
 	// send request
 
-	$.ajax({
-		headers: { 	'SOAPAction': "\"Login\""
-					},
-		url:"https://apix-test.ucb.com:9233/ucbboothdemo/Login",
-		type: "POST",
-		contentType: "text/xml; charset=utf-8",
-		accepts:"application/xml; text/xml; \*/\*",
-		dataType: "json",
-		crossDomain: true,
-		data: sr,
-		processData: false,
-		success: function(resp){
-//			alert("success")
-			ISDemo.Events = resp;
-			$.mobile.loading("hide");
-			// Create session.
-			var today = new Date();
-			var expirationDate = new Date();
-			expirationDate.setTime(today.getTime() + 100000);
-			ISDemo.Session.username=username;
-			ISDemo.Session.password=password;
-			ISDemo.SessionexpirationDate=expirationDate,
-			ISDemo.SessionkeepSignedIn=me.$chkKeepSignedIn.is(":checked")
-			// Go to main menu.
-//			aler("username: " + ISDemo.Session.getInstance().get("username"));
-			$.mobile.navigate(me.mainMenuPageId);
-		},
-		error: function(jqXHR, textStatus, errorThrown) {
-			// or use alerts if you can't see your log
-			alert("status " + jqXHR.status + ": " +textStatus);
-			alert("errorThrown: " + errorThrown);
-			// can't remember if this works:
-			alert(jqXHR.statusText);
-			}
-		
-	});
+//	$.ajax({
+//		headers: { 	'SOAPAction': "\"Login\""
+//					},
+//		url:"https://apix-test.ucb.com:9233/ucbboothdemo/Login",
+//		type: "POST",
+//		contentType: "text/xml; charset=utf-8",
+//		accepts:"application/xml; text/xml; \*/\*",
+//		dataType: "json",
+//		crossDomain: true,
+//		data: sr,
+//		processData: false,
+//		success: function(resp){
+////			alert("success")
+//			ISDemo.Events = resp;
+//			$.mobile.loading("hide");
+//			// Create session.
+//			var today = new Date();
+//			var expirationDate = new Date();
+//			expirationDate.setTime(today.getTime() + 100000);
+//			ISDemo.Session.username=username;
+//			ISDemo.Session.password=password;
+//			ISDemo.SessionexpirationDate=expirationDate,
+//			ISDemo.SessionkeepSignedIn=me.$chkKeepSignedIn.is(":checked")
+//			// Go to main menu.
+////			aler("username: " + ISDemo.Session.getInstance().get("username"));
+//			$.mobile.navigate(me.mainMenuPageId);
+//		},
+//		error: function(jqXHR, textStatus, errorThrown) {
+//			// or use alerts if you can't see your log
+//			alert("status " + jqXHR.status + ": " +textStatus);
+//			alert("errorThrown: " + errorThrown);
+//			// can't remember if this works:
+//			alert(jqXHR.statusText);
+//			}
+//		
+//	});
 
 	// ...
 //
