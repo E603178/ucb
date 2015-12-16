@@ -13,7 +13,7 @@
 		Jeroen Claes
 	</author>
 	<content src="index.html" />
-	<preference name="phonegap-version" value="4.3.1" />
+	<preference name="phonegap-version" value="3.5.0" />
 	<preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"                 value="true" />           <!-- all: hides the status bar at the top of the screen -->
@@ -53,7 +53,7 @@
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
-    <gap:plugin name="cordova-plugin-whitelist" source="npm"/>
+<!--     <plugin name="cordova-plugin-whitelist" /> -->
 
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
@@ -88,8 +88,8 @@
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg"      gap:platform="winphone" />
 
     <access origin="*" />
-    <allow-intent href="*" />
-    <allow-navigation href="*" />
+<!--     <allow-intent href="*" /> -->
+<!--     <allow-navigation href="*" /> -->
     <!-- Added the following intents to support the removal of whitelist code from base cordova to a plugin -->
     <!-- Whitelist configuration. Refer to https://cordova.apache.org/docs/en/edge/guide_appdev_whitelist_index.md.html -->
 <!--     <allow-intent href="http://*/*" /> -->
