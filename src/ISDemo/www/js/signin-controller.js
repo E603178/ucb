@@ -79,7 +79,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	$.mobile.allowCrossDomainPages = true;	
 	
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST", "https://apix-test.ucb.com:9233/ucbboothdemo/Login", true);
+	xmlhttp.open("POST", "https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login", true);
 
 	var sr = "<?xml version='1.0' encoding='UTF-8'?>";
 	sr += "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" >";
@@ -94,7 +94,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
 	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
 	xmlhttp.setRequestHeader("data-Type", "json");
-	xmlhttp.setRequestHeader("Hoste", "apix-test.ucb.com:9233");
+	xmlhttp.setRequestHeader("Hoste", "webmessaging-test.ucb.com:9233");
 	xmlhttp.send(sr);
 	// send request
 	
@@ -108,7 +108,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 				// Create session.
 				var today = new Date();
 				var expirationDate = new Date();
-				expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
+				expirationDate.setTime(today.getTime() + 100000);
 				ISDemo.Session.username=username;
 				ISDemo.Session.password=password;
 				ISDemo.SessionexpirationDate=expirationDate,
@@ -126,7 +126,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 //	$.ajax({
 //		headers: { 	'SOAPAction': "\"Login\""
 //					},
-//		url:"https://apix-test.ucb.com:9233/ucbboothdemo/Login",
+//		url:"https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login",
 //		type: "POST",
 //		contentType: "text/xml; charset=utf-8",
 //		accepts:"application/xml; text/xml; \*/\*",
