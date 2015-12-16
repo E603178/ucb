@@ -90,10 +90,10 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	sr += "<\/soap:Envelope>";
 
 	// Send the POST request
-	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
-	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
-	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-	xmlhttp.setRequestHeader("data-Type", "json");
+//	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
+//	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
+//	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+//	xmlhttp.setRequestHeader("data-Type", "json");
 //	xmlhttp.send(sr);
 	// send request
 
@@ -109,7 +109,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 		data: sr,
 		processData: false,
 		success: function(resp){
-			alert("success")
+//			alert("success")
 			ISDemo.Events = resp;
 			$.mobile.loading("hide");
 			// Create session.
@@ -130,34 +130,32 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 		
 	});
 
-	// Skip login for testing purposes. TODO remove for final deployment.
-
 	// ...
-
-	xmlhttp.onreadystatechange = function() {
-		if (xmlhttp.readyState == 4) {
-			if (xmlhttp.status == 200) {
-				$.mobile.loading("hide");
-				var resp = xmlhttp.response;
-				ISDemo.Events = jQuery.parseJSON(resp);
-				$.mobile.loading("hide");
-				// Create session.
-				var today = new Date();
-				var expirationDate = new Date();
-				expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
-				ISDemo.Session.username=username;
-				ISDemo.Session.password=password;
-				ISDemo.SessionexpirationDate=expirationDate,
-				ISDemo.SessionkeepSignedIn=me.$chkKeepSignedIn.is(":checked")
-				// Go to main menu.
-//				aler("username: " + ISDemo.Session.getInstance().get("username"));
-				$.mobile.navigate(me.mainMenuPageId);
-			} else {
-				$.mobile.loading("hide");
-				alert('Error ' + xmlhttp.status + ': ' + xmlhttp.statusText);
-			}
-		}
-	}
+//
+//	xmlhttp.onreadystatechange = function() {
+//		if (xmlhttp.readyState == 4) {
+//			if (xmlhttp.status == 200) {
+//				$.mobile.loading("hide");
+//				var resp = xmlhttp.response;
+//				ISDemo.Events = jQuery.parseJSON(resp);
+//				$.mobile.loading("hide");
+//				// Create session.
+//				var today = new Date();
+//				var expirationDate = new Date();
+//				expirationDate.setTime(today.getTime() + ISDemo.Settings.sessionTimeoutInMSec);
+//				ISDemo.Session.username=username;
+//				ISDemo.Session.password=password;
+//				ISDemo.SessionexpirationDate=expirationDate,
+//				ISDemo.SessionkeepSignedIn=me.$chkKeepSignedIn.is(":checked")
+//				// Go to main menu.
+////				aler("username: " + ISDemo.Session.getInstance().get("username"));
+//				$.mobile.navigate(me.mainMenuPageId);
+//			} else {
+//				$.mobile.loading("hide");
+//				alert('Error ' + xmlhttp.status + ': ' + xmlhttp.statusText);
+//			}
+//		}
+//	}
 
 	/*
 	 * 
