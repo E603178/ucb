@@ -182,7 +182,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 
 			} else {
 				$.mobile.loading("hide");
-				alert('Error ' + xmlhttp.status + ': ' + xmlhttp.response);
+				alert('Error ' + xmlhttp.status + ': ' + xmlhttp.statusText);
 			}
 		}
 	}
