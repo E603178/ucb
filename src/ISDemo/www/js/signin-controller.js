@@ -98,8 +98,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	xmlhttp.setRequestHeader("Host", "webmessaging-test.ucb.com:9233");
 	xmlhttp.setRequestHeader("Connection", "Keep-Alive");
 	xmlhttp.setRequestHeader("User-Agent", "Apache-HttpClient/4.1.1 (java 1.5)");
-	xmlhttp.
-	xmlhttp.send(sr);
+//	xmlhttp.send(sr);
 	// send request
 	
 	xmlhttp.onload=function() {
@@ -127,6 +126,16 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 			}
 		}
 	};
+	
+	$.ajax({ type: 'POST', url: ISDemo.Settings.signInUrl, data: "username=" +
+		username + "&password=" + password, success: function (resp) {
+				alert("success"), error: function(err){
+					alert(err.status);
+				}
+					
+				};
+		}
+	});
 	
 
 //	$.ajax({
