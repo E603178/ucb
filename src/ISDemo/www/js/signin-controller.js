@@ -92,11 +92,14 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	// Send the POST request
 	xmlhttp.setRequestHeader("Man", "POST https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login HTTP/1.1");
 	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
-	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
 	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
 	xmlhttp.setRequestHeader("Content-Length", sr.length);
-	xmlhttp.setRequestHeader("Data-Type", "json");
+//	xmlhttp.setRequestHeader("Data-Type", "json");
 	xmlhttp.setRequestHeader("Host", "webmessaging-test.ucb.com:9233");
+	xmlhttp.setRequestHeader("Connection", "Keep-Alive");
+	xmlhttp.setRequestHeader("User-Agent", "Apache-HttpClient/4.1.1 (java 1.5)");
+", "Keep-Alive");
 	xmlhttp.send(sr);
 	// send request
 	
