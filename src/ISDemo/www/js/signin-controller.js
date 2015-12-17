@@ -81,18 +81,15 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", "https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login", true);
 
-//	var sr = "<?xml version='1.0' encoding='UTF-8'?>";
-//	sr += "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" >";
-//		sr += "<soap:Body>";
-//	sr += "<wsse:Username>" + username + "</wsse:Username>";
-//	sr += "<wsse:Password>"	+ password + "</wsse:Password>";
-//	sr += "<\/soap:Body>";
-//	sr += "<\/soap:Envelope>";
-	
-	var sr = "test"
+	var sr = "<?xml version='1.0' encoding='UTF-8'?>";
+	sr += "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" >";
+		sr += "<soap:Body>";
+	sr += "<wsse:Username>" + username + "</wsse:Username>";
+	sr += "<wsse:Password>"	+ password + "</wsse:Password>";
+	sr += "<\/soap:Body>";
+	sr += "<\/soap:Envelope>";
 
 	// Send the POST request
-//	xmlhttp.setRequestHeader("Man", "POST https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login HTTP/1.1");
 //	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
 	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
 	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
@@ -101,6 +98,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	xmlhttp.setRequestHeader("Host", "webmessaging-test.ucb.com:9233");
 	xmlhttp.setRequestHeader("Connection", "Keep-Alive");
 	xmlhttp.setRequestHeader("User-Agent", "Apache-HttpClient/4.1.1 (java 1.5)");
+	xmlhttp.
 	xmlhttp.send(sr);
 	// send request
 	
