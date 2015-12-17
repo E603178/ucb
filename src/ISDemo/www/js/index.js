@@ -105,6 +105,13 @@ $(document).on(
 
 $(document).on(
 		'vclick',
+		'#logout-button',function(){
+			ISDemo.Session.username=null;
+			ISDemo.Session.password=null;
+		});
+
+$(document).on(
+		'vclick',
 		'#event-list li a',
 		function() {
 			eventInfo.id = $(this).attr('data-id');

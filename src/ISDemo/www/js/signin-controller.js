@@ -76,32 +76,33 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	$.mobile.loading("show");
 
 	$.support.cors = true;
-	$.mobile.allowCrossDomainPages = true;	
-	
+	$.mobile.allowCrossDomainPages = true;
+
 	var xmlhttp = new XMLHttpRequest();
 	xmlhttp.open("POST", "https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login", true);
 
 	var sr = "<?xml version='1.0' encoding='UTF-8'?>";
 	sr += "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" >";
-		sr += "<soap:Body>";
+	sr += "<soap:Body>";
 	sr += "<wsse:Username>" + username + "</wsse:Username>";
-	sr += "<wsse:Password>"	+ password + "</wsse:Password>";
+	sr += "<wsse:Password>" + password + "</wsse:Password>";
 	sr += "<\/soap:Body>";
 	sr += "<\/soap:Envelope>";
 
 	// Send the POST request
-//	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
+	// xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml",
+	// "\*/\*");
 	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
 	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
 	xmlhttp.setRequestHeader("Content-Length", sr.length);
-//	xmlhttp.setRequestHeader("Data-Type", "json");
+	// xmlhttp.setRequestHeader("Data-Type", "json");
 	xmlhttp.setRequestHeader("Host", "webmessaging-test.ucb.com:9233");
 	xmlhttp.setRequestHeader("Connection", "Keep-Alive");
 	xmlhttp.setRequestHeader("User-Agent", "Apache-HttpClient/4.1.1 (java 1.5)");
-//	xmlhttp.send(sr);
+	 xmlhttp.send();
 	// send request
-	
-	xmlhttp.onload=function() {
+
+	xmlhttp.onload = function() {
 		if (xmlhttp.readyState == 4) {
 			if (xmlhttp.status == 200) {
 				$.mobile.loading("hide");
@@ -112,73 +113,62 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 				var today = new Date();
 				var expirationDate = new Date();
 				expirationDate.setTime(today.getTime() + 100000);
-				ISDemo.Session.username=username;
-				ISDemo.Session.password=password;
-				ISDemo.SessionexpirationDate=expirationDate,
-				ISDemo.SessionkeepSignedIn=me.$chkKeepSignedIn.is(":checked")
+				ISDemo.Session.username = username;
+				ISDemo.Session.password = password;
+				ISDemo.SessionexpirationDate = expirationDate, ISDemo.SessionkeepSignedIn = me.$chkKeepSignedIn
+						.is(":checked")
 				// Go to main menu.
-//				aler("username: " + ISDemo.Session.getInstance().get("username"));
+				// aler("username: " +
+				// ISDemo.Session.getInstance().get("username"));
 				$.mobile.navigate(me.mainMenuPageId);
 			} else {
-				$("#dlg-invalid-credentials").popup( "open");
+				$("#dlg-invalid-credentials").popup("open");
 				$.mobile.loading("hide");
-//				alert('Error ' + xmlhttp.status + ': ' + xmlhttp.statusText);
+				// alert('Error ' + xmlhttp.status + ': ' + xmlhttp.statusText);
 			}
 		}
 	};
 	
-	$.ajax({ type: 'POST', url: ISDemo.Settings.signInUrl, data: "username=" +
-		username + "&password=" + password, success: function (resp) {
-				alert("success"), error: function(err){
-					alert(err.status);
-				}
-					
-				};
-		}
-	});
 	
-
-//	$.ajax({
-//		headers: { 	'SOAPAction': "\"Login\""
-//					},
-//		url:"https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login",
-//		type: "POST",
-//		contentType: "text/xml; charset=utf-8",
-//		accept:"application/xml; text/xml; \*/\*",
-//		host:"https://webmessaging-test.ucb.com:9233",
-//		dataType: "json",
-//		crossDomain: true,
-//		data: sr,
-//		processData: false,
-//		success: function(resp){
-////			alert("success")
-//			ISDemo.Events = resp;
-//			$.mobile.loading("hide");
-//			// Create session.
-//			var today = new Date();
-//			var expirationDate = new Date();
-//			expirationDate.setTime(today.getTime() + 100000);
-//			ISDemo.Session.username=username;
-//			ISDemo.Session.password=password;
-//			ISDemo.SessionexpirationDate=expirationDate,
-//			ISDemo.SessionkeepSignedIn=me.$chkKeepSignedIn.is(":checked")
-//			// Go to main menu.
-////			aler("username: " + ISDemo.Session.getInstance().get("username"));
-//			$.mobile.navigate(me.mainMenuPageId);
-//		},
-//		error: function(jqXHR, textStatus, errorThrown) {
-//			// or use alerts if you can't see your log
-//			alert("status " + jqXHR.status + ": " +textStatus);
-//			alert("errorThrown: " + errorThrown);
-//			// can't remember if this works:
-//			alert(jqXHR.statusText);
-//			}
-//		
-//	});
+	// $.ajax({
+	// headers: { 'SOAPAction': "\"Login\""
+	// },
+	// url:"https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login",
+	// type: "POST",
+	// contentType: "text/xml; charset=utf-8",
+	// accept:"application/xml; text/xml; \*/\*",
+	// host:"https://webmessaging-test.ucb.com:9233",
+	// dataType: "json",
+	// crossDomain: true,
+	// data: sr,
+	// processData: false,
+	// success: function(resp){
+	// // alert("success")
+	// ISDemo.Events = resp;
+	// $.mobile.loading("hide");
+	// // Create session.
+	// var today = new Date();
+	// var expirationDate = new Date();
+	// expirationDate.setTime(today.getTime() + 100000);
+	// ISDemo.Session.username=username;
+	// ISDemo.Session.password=password;
+	// ISDemo.SessionexpirationDate=expirationDate,
+	// ISDemo.SessionkeepSignedIn=me.$chkKeepSignedIn.is(":checked")
+	// // Go to main menu.
+	// // aler("username: " + ISDemo.Session.getInstance().get("username"));
+	// $.mobile.navigate(me.mainMenuPageId);
+	// },
+	// error: function(jqXHR, textStatus, errorThrown) {
+	// // or use alerts if you can't see your log
+	// alert("status " + jqXHR.status + ": " +textStatus);
+	// alert("errorThrown: " + errorThrown);
+	// // can't remember if this works:
+	// alert(jqXHR.statusText);
+	// }
+	//		
+	// });
 
 	// ...
-
-	
 
 	/*
 	 * 
