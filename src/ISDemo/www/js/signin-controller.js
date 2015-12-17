@@ -79,7 +79,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	$.mobile.allowCrossDomainPages = true;	
 	
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET", "https://webmessaging-test.ucb.com:9233/ping", true);
+	xmlhttp.open("POST", "https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login", true);
 
 	var sr = "<?xml version='1.0' encoding='UTF-8'?>";
 	sr += "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" >";
@@ -90,11 +90,11 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	sr += "<\/soap:Envelope>";
 
 	// Send the POST request
-//	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
-//	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
-//	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-//	xmlhttp.setRequestHeader("data-Type", "json");
-//	xmlhttp.setRequestHeader("Host", "webmessaging-test.ucb.com:9233");
+	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
+	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
+	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+	xmlhttp.setRequestHeader("data-Type", "json");
+	xmlhttp.setRequestHeader("Host", "webmessaging-test.ucb.com:9233");
 	xmlhttp.send(sr);
 	// send request
 	
@@ -103,7 +103,6 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 			if (xmlhttp.status == 200) {
 				$.mobile.loading("hide");
 				var resp = xmlhttp.response;
-				alert(resp);
 				ISDemo.Events = jQuery.parseJSON(resp);
 				$.mobile.loading("hide");
 				// Create session.
