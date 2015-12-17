@@ -79,7 +79,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	$.mobile.allowCrossDomainPages = true;	
 	
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST", "https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login", true);
+	xmlhttp.open("GET", "https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login", true);
 
 	var sr = "<?xml version='1.0' encoding='UTF-8'?>";
 	sr += "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" >";
@@ -99,7 +99,6 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	xmlhttp.setRequestHeader("Host", "webmessaging-test.ucb.com:9233");
 	xmlhttp.setRequestHeader("Connection", "Keep-Alive");
 	xmlhttp.setRequestHeader("User-Agent", "Apache-HttpClient/4.1.1 (java 1.5)");
-", "Keep-Alive");
 	xmlhttp.send(sr);
 	// send request
 	
@@ -122,8 +121,9 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 //				aler("username: " + ISDemo.Session.getInstance().get("username"));
 				$.mobile.navigate(me.mainMenuPageId);
 			} else {
+				$("#dlg-invalid-credentials").popup( "open");
 				$.mobile.loading("hide");
-				alert('Error ' + xmlhttp.status + ': ' + xmlhttp.statusText);
+//				alert('Error ' + xmlhttp.status + ': ' + xmlhttp.statusText);
 			}
 		}
 	};
