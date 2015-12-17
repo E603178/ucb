@@ -13,7 +13,8 @@
 		Jeroen Claes
 	</author>
 	<content src="index.html" />
-	<preference name="phonegap-version" value="cli-5.1.1" />
+	<preference name="phonegap-version" value="cli-5.2.0" />
+	<preference name="OverrideUserAgent" value="MyCordovaApp/1.2.3" />
 	<preference name="orientation"                value="default" />        <!-- all: default means both landscape and portrait are enabled -->
     <preference name="target-device"              value="universal" />      <!-- all: possible values handset, tablet, or universal -->
     <preference name="fullscreen"                 value="true" />           <!-- all: hides the status bar at the top of the screen -->
