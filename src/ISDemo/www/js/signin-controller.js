@@ -79,7 +79,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	$.mobile.allowCrossDomainPages = true;	
 	
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST", "https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login", true);
+	xmlhttp.open("GET", "https://webmessaging-test.ucb.com:9233/ping", true);
 
 	var sr = "<?xml version='1.0' encoding='UTF-8'?>";
 	sr += "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" >";
@@ -90,12 +90,12 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	sr += "<\/soap:Envelope>";
 
 	// Send the POST request
-	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
-	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
-	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-	xmlhttp.setRequestHeader("data-Type", "json");
-	xmlhttp.setRequestHeader("Host", "webmessaging-test.ucb.com:9233");
-//	xmlhttp.send(sr);
+//	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
+//	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
+//	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+//	xmlhttp.setRequestHeader("data-Type", "json");
+//	xmlhttp.setRequestHeader("Host", "webmessaging-test.ucb.com:9233");
+	xmlhttp.send(sr);
 	// send request
 	
 	xmlhttp.onload=function() {
@@ -103,6 +103,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 			if (xmlhttp.status == 200) {
 				$.mobile.loading("hide");
 				var resp = xmlhttp.response;
+				alert(resp);
 				ISDemo.Events = jQuery.parseJSON(resp);
 				$.mobile.loading("hide");
 				// Create session.
@@ -124,43 +125,43 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	};
 	
 
-	$.ajax({
-		headers: { 	'SOAPAction': "\"Login\""
-					},
-		url:"https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login",
-		type: "POST",
-		contentType: "text/xml; charset=utf-8",
-		accept:"application/xml; text/xml; \*/\*",
-		host:"https://webmessaging-test.ucb.com:9233",
-		dataType: "json",
-		crossDomain: true,
-		data: sr,
-		processData: false,
-		success: function(resp){
-//			alert("success")
-			ISDemo.Events = resp;
-			$.mobile.loading("hide");
-			// Create session.
-			var today = new Date();
-			var expirationDate = new Date();
-			expirationDate.setTime(today.getTime() + 100000);
-			ISDemo.Session.username=username;
-			ISDemo.Session.password=password;
-			ISDemo.SessionexpirationDate=expirationDate,
-			ISDemo.SessionkeepSignedIn=me.$chkKeepSignedIn.is(":checked")
-			// Go to main menu.
-//			aler("username: " + ISDemo.Session.getInstance().get("username"));
-			$.mobile.navigate(me.mainMenuPageId);
-		},
-		error: function(jqXHR, textStatus, errorThrown) {
-			// or use alerts if you can't see your log
-			alert("status " + jqXHR.status + ": " +textStatus);
-			alert("errorThrown: " + errorThrown);
-			// can't remember if this works:
-			alert(jqXHR.statusText);
-			}
-		
-	});
+//	$.ajax({
+//		headers: { 	'SOAPAction': "\"Login\""
+//					},
+//		url:"https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login",
+//		type: "POST",
+//		contentType: "text/xml; charset=utf-8",
+//		accept:"application/xml; text/xml; \*/\*",
+//		host:"https://webmessaging-test.ucb.com:9233",
+//		dataType: "json",
+//		crossDomain: true,
+//		data: sr,
+//		processData: false,
+//		success: function(resp){
+////			alert("success")
+//			ISDemo.Events = resp;
+//			$.mobile.loading("hide");
+//			// Create session.
+//			var today = new Date();
+//			var expirationDate = new Date();
+//			expirationDate.setTime(today.getTime() + 100000);
+//			ISDemo.Session.username=username;
+//			ISDemo.Session.password=password;
+//			ISDemo.SessionexpirationDate=expirationDate,
+//			ISDemo.SessionkeepSignedIn=me.$chkKeepSignedIn.is(":checked")
+//			// Go to main menu.
+////			aler("username: " + ISDemo.Session.getInstance().get("username"));
+//			$.mobile.navigate(me.mainMenuPageId);
+//		},
+//		error: function(jqXHR, textStatus, errorThrown) {
+//			// or use alerts if you can't see your log
+//			alert("status " + jqXHR.status + ": " +textStatus);
+//			alert("errorThrown: " + errorThrown);
+//			// can't remember if this works:
+//			alert(jqXHR.statusText);
+//			}
+//		
+//	});
 
 	// ...
 
