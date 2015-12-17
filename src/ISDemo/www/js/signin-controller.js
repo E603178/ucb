@@ -79,15 +79,17 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	$.mobile.allowCrossDomainPages = true;	
 	
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("GET", "https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login", true);
+	xmlhttp.open("POST", "https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login", true);
 
-	var sr = "<?xml version='1.0' encoding='UTF-8'?>";
-	sr += "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" >";
-		sr += "<soap:Body>";
-	sr += "<wsse:Username>" + username + "</wsse:Username>";
-	sr += "<wsse:Password>"	+ password + "</wsse:Password>";
-	sr += "<\/soap:Body>";
-	sr += "<\/soap:Envelope>";
+//	var sr = "<?xml version='1.0' encoding='UTF-8'?>";
+//	sr += "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" >";
+//		sr += "<soap:Body>";
+//	sr += "<wsse:Username>" + username + "</wsse:Username>";
+//	sr += "<wsse:Password>"	+ password + "</wsse:Password>";
+//	sr += "<\/soap:Body>";
+//	sr += "<\/soap:Envelope>";
+	
+	var sr = "test"
 
 	// Send the POST request
 //	xmlhttp.setRequestHeader("Man", "POST https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login HTTP/1.1");
