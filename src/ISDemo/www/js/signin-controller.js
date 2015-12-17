@@ -79,7 +79,7 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	$.mobile.allowCrossDomainPages = true;	
 	
 	var xmlhttp = new XMLHttpRequest();
-	xmlhttp.open("POST", "https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login", true);
+	xmlhttp.open("POST", "https://webmessaging-test.ucb.com:9233/ucbboothdemo/Login", false);
 
 	var sr = "<?xml version='1.0' encoding='UTF-8'?>";
 	sr += "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" >";
@@ -98,7 +98,9 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	xmlhttp.send(sr);
 	// send request
 	
-	xmlhttp.onreadystatechange = function() {
+	alert(xmlhttp.response);
+	
+	xmlhttp.onload=function() {
 		if (xmlhttp.readyState == 4) {
 			if (xmlhttp.status == 200) {
 				$.mobile.loading("hide");
@@ -121,7 +123,8 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 				alert('Error ' + xmlhttp.status + ': ' + xmlhttp.statusText);
 			}
 		}
-	}
+	};
+	
 
 //	$.ajax({
 //		headers: { 	'SOAPAction': "\"Login\""
