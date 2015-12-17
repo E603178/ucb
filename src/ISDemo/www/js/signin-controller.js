@@ -90,11 +90,12 @@ ISDemo.SignInController.prototype.onSignInCommand = function() {
 	sr += "<\/soap:Envelope>";
 
 	// Send the POST request
-//	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
+	xmlhttp.setRequestHeader("Accept", "application/xml", "text/xml", "\*/\*");
 	xmlhttp.setRequestHeader("SOAPAction", "\"Login\"");
-//	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
-//	xmlhttp.setRequestHeader("Data-Type", "json");
-//	xmlhttp.setRequestHeader("Host", "webmessaging-test.ucb.com:9233");
+	xmlhttp.setRequestHeader("Content-Type", "text/xml; charset=utf-8");
+	xmlhttp.setRequestHeader("Content-Length", sr.length);
+	xmlhttp.setRequestHeader("Data-Type", "json");
+	xmlhttp.setRequestHeader("Host", "webmessaging-test.ucb.com:9233");
 	xmlhttp.send(sr);
 	// send request
 	
